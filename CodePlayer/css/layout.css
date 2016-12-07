@@ -1,0 +1,139 @@
+body {
+	font-family: sans-serif;
+}
+
+#topBar {
+	width: 100%;
+	height: 35px;
+	background-color: #ddddff;
+	padding: 0;
+	margin: 0;
+
+}
+
+#buttonContainer {
+
+	width: 550px;
+	margin: 0 auto;
+	height:100%;
+	
+
+}
+
+
+
+
+
+
+
+
+.toggleButton {
+
+	float: left;
+	margin: 2px 0;
+	padding: 6px 20px;
+	border: 1px solid #aaaaaa;
+	border-right: none;
+
+}
+
+.toggleButtonActive {
+
+	background-color: #bbbbdd;
+}
+
+.toggleButtonHighlighted {
+
+	background-color: #ccccee;
+
+}
+
+
+
+
+
+
+
+#html {
+
+	border-radius: 6px 0 0 6px;
+}
+
+#output {
+
+	border-radius: 0 6px 6px 0;
+	border-right: 1px solid #aaaaaa;
+
+}
+
+#logo {
+
+	float: left;
+	font-size: 125%;
+	height:100%;
+	padding:0 20px;
+	padding-top: 7px;
+
+
+
+}
+
+#mainWrapper {
+
+	width: 100%;
+}
+
+textarea {
+
+
+
+}
+
+.pane {
+ 
+	width: 48.5%;
+	resize: none;
+	float: left;
+	border: none;
+
+}
+
+.hidden {
+
+	display: none;
+
+}
+
+
+#htmlPanel {
+
+	background-color: #ffdddd;
+
+}
+
+#cssPanel {
+
+	background-color: #ddffdd;
+
+}
+
+#javascriptPanel {
+
+	background-color: #ddddff;
+
+}
+
+#runJava {
+
+	background-color: red;
+
+	position: relative;
+
+	top: -30px;
+
+	float: left;
+
+}
+
+/* background-color: red; */
+

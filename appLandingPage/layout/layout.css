@@ -1,0 +1,49 @@
+body {
+	position: relative;
+}
+
+
+
+.jumbotron {
+	position: relative;
+	background: url("../Images/jumbo02.jpg") center center;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	overflow: hidden;
+
+}
+
+
+
+.card-img-top {
+
+	width: 100%;
+
+}
+
+#about {
+
+	margin-top: 75px;
+	margin-bottom: 75px;
+
+}
+
+
+#download {
+
+	height: 360px;
+	background-color: #aaD7aa;
+	padding-top: 60px;
+	padding-bottom: 400px;
+	text-align: center;
+
+}
+
+#download img {
+
+	width: 25%;
+}
+
+
+

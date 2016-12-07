@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		
+		<title>codePlayer</title>
+
+
+		<link href="./jquery-ui-1.11.4/jquery-ui.css" rel="stylesheet">
+		
+		<link href="./css/layout.css" rel="stylesheet">
+
+		<script type="text/javascript" src="jquery-2.2.2.min.js"></script>
+
+		<script src="./jquery-ui-1.11.4/jquery-ui.min.js"></script>
+		
+
+	</head>
+		
+
+	<body>
+		
+		<div id="topBar">
+			
+			<div id="logo">code player</div>
+
+			<div id="buttonContainer">
+				
+				<div class="toggleButton toggleButtonActive" id="html">HTML</div>
+				
+				<div class="toggleButton" id="css">CSS</div>
+				
+				<div class="toggleButton" id="javascript">JavaScript</div>
+
+				<div class="toggleButton" id="runJS">JS off</div>
+				
+				<div class="toggleButton toggleButtonActive" id="output">Output</div>
+
+
+			</div>
+
+
+		</div>
+
+		<div style="clear: both;"></div>
+
+
+		<div id="mainWrapper">
+			
+			<textarea id="htmlPanel" class="pane">Hello world</textarea>
+
+			<textarea id="cssPanel" class="pane hidden"></textarea>
+
+			<textarea id="javascriptPanel" class="pane hidden"></textarea>
+
+			<iframe id="outputPanel"  class="pane"></iframe>
+
+			
+			
+
+
+		</div>
+
+		<!-- - - - - - - - - - - - - - - - - SCRIPT	- - - - - - - - - - - - - - - - -->
+
+		<script type="text/javascript">
+
+
+		var doRunJS = false;
+
+
+		function resizeTheWin () {
+
+			$(".pane").height( $(window).height() - $("#topBar").height() - 30 );
+
+		};
+
+		function updateOutput () {
+
+			$("#outputPanel").contents().find("html").html( $("#htmlPanel").val() );
+
+			$("#outputPanel").contents().find("html").html( "<html><head><style type='text/css'>" +$("#cssPanel").val() + "</style></head><body>" + $("#htmlPanel").val() + "</body>" );
+
+			
+
+			if ( doRunJS ) {
+
+				document.getElementById('outputPanel').contentWindow.eval( $("#javascriptPanel").val() );
+
+			}
+
+
+
+		}
+
+
+
+
+
+			// on window resize
+			$(window).resize( function () {
+
+				console.log( "WindowHeight: " + $( window ).height() );
+				console.log( "WindowWidth: " + $( window ).width() );
+
+				resizeTheWin();  /*this has to b fixed as it doesnt resize if u resize too fast*/
+
+			} );
+
+
+
+			$(".toggleButton").hover(function(){
+				$(this).addClass( "toggleButtonHighlighted" );
+			}, function(){
+				$(this).removeClass( "toggleButtonHighlighted" );
+			});
+
+			$(".toggleButton").click(function  () {
+				
+				$(this).toggleClass("toggleButtonActive");
+
+				// console.log("#" + this.id + "Panel");
+
+				$("#" + this.id + "Panel").toggleClass("hidden");
+
+				var howManyPanels = 4 - $(".hidden").length;
+
+				console.log( "Active panels: " + howManyPanels ); //how many panels
+
+				var paneWidthPercent = 98 / howManyPanels;
+
+				console.log( paneWidthPercent.toFixed(2) + "%" );
+
+				$(".pane").width( paneWidthPercent + "%" );
+
+				console.log( "paneWidht " + $(".pane").width() +"px" );
+
+
+
+
+				
+				if (this.id == "runJS") {
+
+					console.log ("runJS");
+
+					//$("#runJS").html( "JS on " );
+
+
+					if ( $("#runJS").hasClass("toggleButtonActive") ) {
+
+						$("#runJS").html( "JS on " );
+						doRunJS = true;
+
+					}
+
+					else {
+
+						$("#runJS").html( "JS off " );
+						doRunJS = false;
+
+					}
+
+					updateOutput();
+
+				};
+
+			});
+
+
+
+			/*          this listens for any change in the textarea        */
+			var oldVal = "";
+
+			$("textarea").on("change keyup paste", function() {
+
+				var currentVal = $(this).val();
+
+				if(currentVal == oldVal) {
+			        return; //check to prevent multiple simultaneous triggers
+			    }
+
+			    oldVal = currentVal; 	
+			    // code to b executed
+			    updateOutput();
+
+
+			});
+
+
+
+			
+
+
+			
+
+			$( document ).ready( function  () {
+				
+				console.log("DocumentReady");
+
+				resizeTheWin();
+
+				updateOutput();
+
+			} );
+
+			// 
+
+			</script>
+
+	</body>
+
+</html>
