@@ -5,3 +5,13 @@
 h1 {
 	text-align: center;
 }
+
+h6 {
+	width: 50%;
+	margin: 0 auto; 
+}
+	
+#footer {
+	width: 50%;
+	margin: 0 auto; 
+}
